@@ -5,27 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>17 pilares para sobrevivir a robótica + IA · skeleton.cl</title>
 <meta name="description" content="Los 17 pilares estratégicos para que una empresa sobreviva a la disrupción de robótica e IA: energía, agricultura, data centers, agua, mantenimiento, logística, construcción, almacenamiento, conectividad satelital, software, robótica, IoT, smart cities, impresión 3D, reciclaje, presente y visión de futuro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --bg:#0a120e;
-    --bg2:#101d17;
-    --card:#142219;
-    --border:#20362a;
-    --border2:#2e5340;
-    --accent:#5ee89b;
-    --accent2:#3ec47a;
-    --text:#eef5f0;
-    --muted:#9dbfab;
-    --muted2:#7a9c88;
+*,
+*::before,
+*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+    --bg:#05060a;
+    --soft:#0b0d12;
+    --surface:#101318;
+    --surface-2:#15181f;
+    --line:#1e222b;
+    --line-soft:#15181f;
+    --text:#f3f4f6;
+    --muted:#9298a3;
+    --muted-2:#676d78;
+    --purple:#a855f7;
+    --cyan:#00e5ff;
+    --pink:#ff006e;
+    --green:#55d187;
+    --orange:#ff6b35;
+    --yellow:#f7c948;
+    --container:1100px;
 
+    /* Colores por pilar */
     --c-energia:#f7c948;
-    --c-agro:#5ee89b;
+    --c-agro:#55d187;
     --c-data:#5eb8f7;
     --c-agua:#4fd1e0;
-    --c-mant:#f79e5e;
+    --c-mant:#ff8a4c;
     --c-log:#b98ef7;
-    --c-const:#f77e9e;
+    --c-const:#ff6b9d;
     --c-almac:#e0c14f;
     --c-sat:#7ee0a0;
     --c-soft:#7eb8ff;
@@ -34,768 +47,1099 @@
     --c-smart:#c6a8ff;
     --c-3d:#f78ed0;
     --c-recicla:#8ee06e;
-    --c-presente:#ffe07e;
-    --c-futuro:#9ed0ff;
-  }
-  html{scroll-behavior:smooth}
-  body{
-    font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-    background:var(--bg);
+}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{
+    background:
+        radial-gradient(ellipse at 80% 0%,rgba(168,85,247,.10),transparent 40rem),
+        radial-gradient(ellipse at 0% 60%,rgba(0,229,255,.06),transparent 40rem),
+        var(--bg);
     color:var(--text);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    padding:1.5rem 1rem 3rem;
-    display:flex;justify-content:center;
-  }
-  .wrap{max-width:940px;width:100%}
-
-  /* HEADER */
-  header{
-    text-align:center;
-    padding:2rem 0 2.2rem;
-    margin-bottom:2.5rem;
-    border-bottom:1px solid var(--border);
-    position:relative;
-  }
-  header::after{
-    content:"";position:absolute;bottom:-1px;left:50%;
-    transform:translateX(-50%);
-    width:80px;height:2px;background:var(--accent);
-    box-shadow:0 0 12px var(--accent);
-    border-radius:2px;
-  }
-  .brand{
-    display:inline-flex;align-items:center;gap:.5rem;
-    font-size:.72rem;font-weight:700;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--accent);
-    margin-bottom:1.4rem;
-  }
-  .brand::before{
-    content:"";width:7px;height:7px;border-radius:50%;
-    background:var(--accent);box-shadow:0 0 10px var(--accent);
-  }
-  h1{
-    font-size:clamp(1.7rem,5vw,2.6rem);
-    font-weight:800;letter-spacing:-.035em;
-    line-height:1.1;color:var(--text);
-    margin-bottom:1rem;
-  }
-  h1 span{color:var(--accent)}
-  .subtitulo{
-    color:var(--muted);
-    font-size:clamp(.9rem,2.4vw,1rem);
-    max-width:640px;margin:0 auto 1.4rem;
+    font-family:"Inter",sans-serif;
     line-height:1.6;
-  }
-  .meta-chips{
-    display:flex;justify-content:center;flex-wrap:wrap;
-    gap:.5rem;margin-top:1.2rem;
-  }
-  .meta-chips span{
-    font-size:.7rem;font-weight:600;
-    letter-spacing:.06em;text-transform:uppercase;
-    padding:.35rem .8rem;border-radius:30px;
-    border:1px solid var(--border2);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    padding:0 0 80px;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--cyan);color:var(--bg)}
+
+.container{
+    width:min(calc(100% - 44px),var(--container));
+    margin-inline:auto;
+}
+
+/* ===== NOISE ===== */
+.noise{
+    position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:9999;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+/* ===== TOPLINE ===== */
+.topline{
+    position:sticky;top:0;z-index:900;
+    border-bottom:1px solid var(--line-soft);
+    font:11px "DM Mono",monospace;
+    letter-spacing:.11em;
+    text-transform:uppercase;
     color:var(--muted);
-    background:rgba(94,232,155,.03);
-  }
+    background:rgba(5,6,10,.7);
+    backdrop-filter:blur(20px);
+}
+.topline-inner{
+    min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{font:800 14px "Space Grotesk",sans-serif;letter-spacing:-.04em}
+.brand span{color:var(--cyan)}
+.status{display:flex;align-items:center;gap:9px}
+.status:before{
+    content:"";width:7px;height:7px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 14px var(--green);
+    animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.5;transform:scale(.8)}
+}
 
-  /* SECCIONES */
-  section{margin-bottom:3rem}
-  h2{
-    font-size:clamp(1.15rem,3vw,1.4rem);font-weight:700;
-    letter-spacing:-.015em;margin-bottom:1.4rem;
-    display:flex;align-items:center;gap:.8rem;color:var(--text);
-  }
-  h2 .bar{
-    width:5px;height:26px;background:var(--accent);
-    border-radius:4px;flex-shrink:0;
-    box-shadow:0 0 14px rgba(94,232,155,.5);
-  }
+/* ===== HEADER ===== */
+header.hero{
+    padding:90px 0 60px;
+    border-bottom:1px solid var(--line-soft);
+    position:relative;
+    overflow:hidden;
+}
+.hero-orb{
+    position:absolute;width:600px;height:600px;border-radius:50%;
+    filter:blur(180px);opacity:.12;pointer-events:none;
+}
+.hero-orb.one{background:var(--purple);top:-250px;right:-200px;animation:float 12s ease-in-out infinite}
+.hero-orb.two{background:var(--cyan);bottom:-300px;left:-200px;animation:float 15s ease-in-out infinite reverse}
+@keyframes float{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(-40px,40px) scale(1.1)}
+}
 
-  /* GRID PILARES */
-  .grid{
+.brand-tag{
+    display:inline-flex;align-items:center;gap:10px;
+    font:11px "DM Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:24px;
+}
+.brand-tag:before{
+    content:"";width:7px;height:7px;border-radius:50%;
+    background:var(--cyan);box-shadow:0 0 12px var(--cyan);
+    animation:pulse 2s ease-in-out infinite;
+}
+
+header.hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(2.2rem,6vw,4.5rem);
+    line-height:1;
+    letter-spacing:-.06em;
+    font-weight:700;
+    margin-bottom:24px;
+    max-width:920px;
+}
+header.hero h1 span{
+    background:linear-gradient(135deg,var(--purple),var(--cyan));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.subtitulo{
+    color:var(--muted);
+    font-size:clamp(1rem,1.5vw,1.1rem);
+    max-width:700px;
+    line-height:1.75;
+    margin-bottom:32px;
+}
+.meta-chips{
+    display:flex;flex-wrap:wrap;gap:8px;
+}
+.meta-chips span{
+    display:inline-flex;align-items:center;gap:7px;
+    font:11px "DM Mono",monospace;
+    letter-spacing:.1em;text-transform:uppercase;
+    padding:8px 13px;border-radius:100px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    background:rgba(255,255,255,.02);
+    transition:border-color .25s ease,color .25s ease;
+}
+.meta-chips span:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
+}
+
+/* ===== BANNER ===== */
+.banner{
+    background:var(--soft);
+    border-bottom:1px solid var(--line-soft);
+    padding:22px 0;
+    overflow:hidden;
+}
+.banner-track{
+    display:flex;align-items:center;gap:40px;
+    animation:slide 40s linear infinite;
+    white-space:nowrap;
+    width:max-content;
+}
+.banner-item{
+    display:flex;align-items:center;gap:12px;
+    color:var(--muted-2);
+    font-family:"Space Grotesk",sans-serif;
+    font-size:.8rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+}
+.banner-item i{color:var(--cyan)}
+@keyframes slide{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+
+/* ===== SECTIONS ===== */
+section{padding:72px 0;border-bottom:1px solid var(--line-soft);position:relative}
+section:last-of-type{border-bottom:0}
+
+.section-head{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:1rem;
-  }
-  .p{
-    background:var(--card);
-    border:1px solid var(--border);
+    grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);
+    gap:34px;align-items:start;margin-bottom:38px;
+}
+
+h2{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(1.5rem,3.5vw,2.4rem);
+    line-height:1.1;
+    letter-spacing:-.05em;
+    font-weight:700;
+    display:flex;align-items:flex-start;gap:16px;
+    margin:0;
+}
+h2 .bar{
+    display:inline-block;
+    width:5px;height:32px;
+    background:linear-gradient(180deg,var(--purple),var(--cyan));
+    border-radius:4px;
+    flex-shrink:0;
+    margin-top:5px;
+    box-shadow:0 0 20px rgba(0,229,255,.3);
+}
+
+.kicker{
+    color:var(--cyan);
+    font:11px "DM Mono",monospace;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    display:block;margin-bottom:10px;
+}
+.section-intro{
+    color:var(--muted);
+    font-size:.95rem;
+    line-height:1.8;
+    max-width:700px;
+}
+
+/* ===== PILARES GRID ===== */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:14px;
+}
+.p{
+    background:linear-gradient(160deg,rgba(255,255,255,.02),transparent 50%),var(--surface);
+    border:1px solid var(--line);
     border-radius:20px;
-    padding:1.4rem;
-    display:flex;flex-direction:column;gap:1rem;
-    transition:border-color .2s,transform .2s,background .2s;
+    padding:26px;
+    display:flex;flex-direction:column;gap:14px;
+    transition:border-color .3s,transform .3s,background .3s;
     position:relative;overflow:hidden;
-    border-top:3px solid var(--sector-color,var(--accent));
-  }
-  .p::after{
-    content:"";position:absolute;top:0;right:0;
-    width:130px;height:130px;
-    background:radial-gradient(circle,var(--sector-glow,rgba(94,232,155,.08)),transparent 70%);
+}
+.p::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:var(--sector-color,var(--cyan));
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.p::after{
+    content:"";position:absolute;top:-40px;right:-40px;
+    width:180px;height:180px;
+    background:radial-gradient(circle,var(--sector-glow,rgba(0,229,255,.08)),transparent 70%);
     pointer-events:none;
-  }
-  .p:hover{
-    border-color:var(--sector-color,var(--border2));
-    background:var(--bg2);
+    opacity:.7;
+}
+.p:hover{
+    border-color:var(--sector-color,var(--cyan));
+    background:var(--surface-2);
     transform:translateY(-3px);
-  }
-  .p-head{display:flex;align-items:center;gap:.9rem}
-  .num{
-    font-size:.85rem;font-weight:800;color:var(--bg);
-    background:var(--sector-color,var(--accent));
-    width:36px;height:36px;border-radius:10px;
+}
+.p:hover::before{transform:scaleX(1)}
+
+.p-head{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.num{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:.85rem;font-weight:700;
+    color:var(--bg);
+    background:var(--sector-color,var(--cyan));
+    width:38px;height:38px;border-radius:11px;
     display:flex;align-items:center;justify-content:center;
     flex-shrink:0;
-  }
-  .ico-wrap{
-    width:52px;height:52px;border-radius:14px;
-    background:var(--sector-bg,rgba(94,232,155,.08));
-    border:1px solid var(--sector-border,rgba(94,232,155,.18));
+    box-shadow:0 0 20px var(--sector-glow,rgba(0,229,255,.2));
+}
+.ico-wrap{
+    width:48px;height:48px;border-radius:14px;
+    background:var(--sector-bg,rgba(0,229,255,.08));
+    border:1px solid var(--sector-border,rgba(0,229,255,.2));
     display:flex;align-items:center;justify-content:center;
     flex-shrink:0;margin-left:auto;
-  }
-  .ico-wrap svg{
-    width:28px;height:28px;
-    stroke:var(--sector-color,var(--accent));
-  }
-  .p h3{
-    font-size:1.02rem;font-weight:700;
-    letter-spacing:-.01em;color:var(--text);
-    margin-bottom:.35rem;
-  }
-  .p p{font-size:.87rem;color:var(--muted);line-height:1.55}
-  .op{
-    margin-top:.7rem;font-size:.8rem;color:var(--sector-color,var(--accent2));
-    font-weight:500;padding-top:.7rem;
-    border-top:1px dashed var(--border);
-  }
-  .op strong{color:var(--sector-color,var(--accent))}
+    transition:all .35s ease;
+}
+.ico-wrap svg{
+    width:24px;height:24px;
+    stroke:var(--sector-color,var(--cyan));
+    fill:none;
+}
+.p:hover .ico-wrap{
+    transform:rotate(-8deg) scale(1.08);
+}
+.p h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.05rem;
+    font-weight:600;
+    letter-spacing:-.02em;
+    color:var(--text);
+    margin-bottom:6px;
+    position:relative;z-index:1;
+}
+.p > div:last-child{position:relative;z-index:1}
+.p p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.op{
+    margin-top:14px;padding-top:13px;
+    border-top:1px dashed var(--line);
+    font-size:.8rem;
+    color:var(--muted);
+    line-height:1.7;
+}
+.op strong{
+    color:var(--sector-color,var(--cyan));
+    font-weight:600;
+    font-family:"Space Grotesk",sans-serif;
+    letter-spacing:.02em;
+}
 
-  /* Colores por pilar */
-  .p-energia{--sector-color:var(--c-energia);--sector-glow:rgba(247,201,72,.08);--sector-bg:rgba(247,201,72,.08);--sector-border:rgba(247,201,72,.2)}
-  .p-agro  {--sector-color:var(--c-agro);  --sector-glow:rgba(94,232,155,.08);--sector-bg:rgba(94,232,155,.08);--sector-border:rgba(94,232,155,.2)}
-  .p-data  {--sector-color:var(--c-data);  --sector-glow:rgba(94,184,247,.08);--sector-bg:rgba(94,184,247,.08);--sector-border:rgba(94,184,247,.2)}
-  .p-agua  {--sector-color:var(--c-agua);  --sector-glow:rgba(79,209,224,.08);--sector-bg:rgba(79,209,224,.08);--sector-border:rgba(79,209,224,.2)}
-  .p-mant  {--sector-color:var(--c-mant);  --sector-glow:rgba(247,158,94,.08);--sector-bg:rgba(247,158,94,.08);--sector-border:rgba(247,158,94,.2)}
-  .p-log   {--sector-color:var(--c-log);   --sector-glow:rgba(185,142,247,.08);--sector-bg:rgba(185,142,247,.08);--sector-border:rgba(185,142,247,.2)}
-  .p-const {--sector-color:var(--c-const); --sector-glow:rgba(247,126,158,.08);--sector-bg:rgba(247,126,158,.08);--sector-border:rgba(247,126,158,.2)}
-  .p-almac {--sector-color:var(--c-almac); --sector-glow:rgba(224,193,79,.08);--sector-bg:rgba(224,193,79,.08);--sector-border:rgba(224,193,79,.2)}
-  .p-sat   {--sector-color:var(--c-sat);   --sector-glow:rgba(126,224,160,.08);--sector-bg:rgba(126,224,160,.08);--sector-border:rgba(126,224,160,.2)}
-  .p-soft  {--sector-color:var(--c-soft);  --sector-glow:rgba(126,184,255,.08);--sector-bg:rgba(126,184,255,.08);--sector-border:rgba(126,184,255,.2)}
-  .p-robot {--sector-color:var(--c-robot); --sector-glow:rgba(255,158,110,.08);--sector-bg:rgba(255,158,110,.08);--sector-border:rgba(255,158,110,.2)}
-  .p-iot   {--sector-color:var(--c-iot);   --sector-glow:rgba(110,224,208,.08);--sector-bg:rgba(110,224,208,.08);--sector-border:rgba(110,224,208,.2)}
-  .p-smart {--sector-color:var(--c-smart); --sector-glow:rgba(198,168,255,.08);--sector-bg:rgba(198,168,255,.08);--sector-border:rgba(198,168,255,.2)}
-  .p-3d    {--sector-color:var(--c-3d);    --sector-glow:rgba(247,142,208,.08);--sector-bg:rgba(247,142,208,.08);--sector-border:rgba(247,142,208,.2)}
-  .p-recicla{--sector-color:var(--c-recicla);--sector-glow:rgba(142,224,110,.08);--sector-bg:rgba(142,224,110,.08);--sector-border:rgba(142,224,110,.2)}
-  .p-presente{--sector-color:var(--c-presente);--sector-glow:rgba(255,224,126,.08);--sector-bg:rgba(255,224,126,.08);--sector-border:rgba(255,224,126,.2)}
-  .p-futuro{--sector-color:var(--c-futuro);--sector-glow:rgba(158,208,255,.08);--sector-bg:rgba(158,208,255,.08);--sector-border:rgba(158,208,255,.2)}
+/* Colores por pilar */
+.p-energia{--sector-color:var(--c-energia);--sector-glow:rgba(247,201,72,.15);--sector-bg:rgba(247,201,72,.08);--sector-border:rgba(247,201,72,.25)}
+.p-agro  {--sector-color:var(--c-agro);  --sector-glow:rgba(85,209,135,.15);--sector-bg:rgba(85,209,135,.08);--sector-border:rgba(85,209,135,.25)}
+.p-data  {--sector-color:var(--c-data);  --sector-glow:rgba(94,184,247,.15);--sector-bg:rgba(94,184,247,.08);--sector-border:rgba(94,184,247,.25)}
+.p-agua  {--sector-color:var(--c-agua);  --sector-glow:rgba(79,209,224,.15);--sector-bg:rgba(79,209,224,.08);--sector-border:rgba(79,209,224,.25)}
+.p-mant  {--sector-color:var(--c-mant);  --sector-glow:rgba(255,138,76,.15);--sector-bg:rgba(255,138,76,.08);--sector-border:rgba(255,138,76,.25)}
+.p-log   {--sector-color:var(--c-log);   --sector-glow:rgba(185,142,247,.15);--sector-bg:rgba(185,142,247,.08);--sector-border:rgba(185,142,247,.25)}
+.p-const {--sector-color:var(--c-const); --sector-glow:rgba(255,107,157,.15);--sector-bg:rgba(255,107,157,.08);--sector-border:rgba(255,107,157,.25)}
+.p-almac {--sector-color:var(--c-almac); --sector-glow:rgba(224,193,79,.15);--sector-bg:rgba(224,193,79,.08);--sector-border:rgba(224,193,79,.25)}
+.p-sat   {--sector-color:var(--c-sat);   --sector-glow:rgba(126,224,160,.15);--sector-bg:rgba(126,224,160,.08);--sector-border:rgba(126,224,160,.25)}
+.p-soft  {--sector-color:var(--c-soft);  --sector-glow:rgba(126,184,255,.15);--sector-bg:rgba(126,184,255,.08);--sector-border:rgba(126,184,255,.25)}
+.p-robot {--sector-color:var(--c-robot); --sector-glow:rgba(255,158,110,.15);--sector-bg:rgba(255,158,110,.08);--sector-border:rgba(255,158,110,.25)}
+.p-iot   {--sector-color:var(--c-iot);   --sector-glow:rgba(110,224,208,.15);--sector-bg:rgba(110,224,208,.08);--sector-border:rgba(110,224,208,.25)}
+.p-smart {--sector-color:var(--c-smart); --sector-glow:rgba(198,168,255,.15);--sector-bg:rgba(198,168,255,.08);--sector-border:rgba(198,168,255,.25)}
+.p-3d    {--sector-color:var(--c-3d);    --sector-glow:rgba(247,142,208,.15);--sector-bg:rgba(247,142,208,.08);--sector-border:rgba(247,142,208,.25)}
+.p-recicla{--sector-color:var(--c-recicla);--sector-glow:rgba(142,224,110,.15);--sector-bg:rgba(142,224,110,.08);--sector-border:rgba(142,224,110,.25)}
 
-  /* TABLA */
-  .tabla-wrap{
-    border-radius:18px;overflow:hidden;
-    border:1px solid var(--border);background:var(--card);
-  }
-  table{width:100%;border-collapse:collapse;font-size:.88rem}
-  th{
-    background:#16261d;color:var(--accent);
-    text-align:left;padding:.9rem 1.1rem;
-    font-size:.72rem;text-transform:uppercase;
-    letter-spacing:.08em;font-weight:700;
-  }
-  td{
-    padding:.85rem 1.1rem;border-top:1px solid var(--border);
-    color:#c4dccd;
-  }
-  td:first-child{font-weight:600;color:var(--text)}
-  tr:hover td{background:rgba(94,232,155,.03)}
-
-  /* MODELO CHILE */
-  .modelo{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:1rem;
-  }
-  .card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:20px;padding:1.4rem;
-    transition:.2s;position:relative;overflow:hidden;
-  }
-  .card:hover{
-    border-color:var(--border2);
-    background:var(--bg2);transform:translateY(-3px);
-  }
-  .card .ico-big{
-    width:56px;height:56px;border-radius:16px;
-    background:rgba(94,232,155,.08);
-    border:1px solid rgba(94,232,155,.18);
-    display:flex;align-items:center;justify-content:center;
-    margin-bottom:1rem;
-  }
-  .card .ico-big svg{width:30px;height:30px}
-  .card h4{
-    font-size:1rem;font-weight:700;color:var(--text);
-    margin-bottom:.4rem;letter-spacing:-.01em;
-  }
-  .card p{font-size:.85rem;color:var(--muted)}
-  .ventaja{
-    margin-top:1.2rem;padding:1rem 1.2rem;
-    border-radius:14px;
-    background:linear-gradient(135deg,rgba(94,232,155,.08),rgba(94,232,155,.02));
-    border:1px solid rgba(94,232,155,.2);
-    font-size:.88rem;color:#c9ecd6;
-  }
-  .ventaja strong{color:var(--accent)}
-
-  /* PRINCIPIOS */
-  .principios{display:flex;flex-direction:column;gap:.65rem}
-  .pr{
-    display:flex;gap:1rem;align-items:flex-start;
-    background:var(--card);border:1px solid var(--border);
-    border-radius:16px;padding:1.1rem 1.3rem;
-    transition:.15s;
-  }
-  .pr:hover{border-color:var(--border2);background:var(--bg2)}
-  .pr .num{
-    width:30px;height:30px;border-radius:9px;font-size:.85rem;
-  }
-  .pr strong{display:block;color:var(--text);font-size:.95rem;margin-bottom:.2rem}
-  .pr p{font-size:.85rem;color:var(--muted)}
-
-  /* BLOQUE PRESENTE / FUTURO */
-  .pf-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:1rem;
-  }
-  .pf{
-    border-radius:20px;padding:1.6rem;
-    position:relative;overflow:hidden;
-  }
-  .pf.presente{
-    background:linear-gradient(160deg,rgba(255,224,126,.06),rgba(255,224,126,.01));
-    border:1px solid rgba(255,224,126,.25);
-  }
-  .pf.futuro{
-    background:linear-gradient(160deg,rgba(158,208,255,.06),rgba(158,208,255,.01));
-    border:1px solid rgba(158,208,255,.25);
-  }
-  .pf .pf-tag{
-    display:inline-block;font-size:.7rem;font-weight:700;
+/* ===== TABLA ===== */
+.tabla-wrap{
+    border-radius:20px;overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--surface);
+}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{
+    background:var(--surface-2);
+    color:var(--cyan);
+    text-align:left;padding:16px 20px;
+    font:11px "DM Mono",monospace;
     text-transform:uppercase;letter-spacing:.1em;
-    padding:.3rem .8rem;border-radius:30px;margin-bottom:.9rem;
-  }
-  .pf.presente .pf-tag{background:rgba(255,224,126,.15);color:#ffe07e}
-  .pf.futuro .pf-tag{background:rgba(158,208,255,.15);color:#9ed0ff}
-  .pf h3{
-    font-size:1.15rem;font-weight:700;color:var(--text);
-    margin-bottom:.6rem;letter-spacing:-.01em;
-  }
-  .pf p{font-size:.88rem;color:var(--muted);margin-bottom:1rem}
-  .pf ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
-  .pf li{
-    font-size:.85rem;color:#c4dccd;
-    padding-left:1.2rem;position:relative;
-  }
-  .pf li::before{
-    content:"▸";position:absolute;left:0;
-    color:var(--accent);font-weight:700;
-  }
-  .pf.presente li::before{color:#ffe07e}
-  .pf.futuro li::before{color:#9ed0ff}
+    font-weight:500;
+}
+td{
+    padding:14px 20px;
+    border-top:1px solid var(--line-soft);
+    color:var(--muted);
+    line-height:1.6;
+}
+td:first-child{
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:600;
+    color:var(--text);
+    white-space:nowrap;
+}
+tr:hover td{background:rgba(0,229,255,.03)}
 
-  /* AVISO */
-  .aviso{
-    margin-top:1.5rem;padding:1.1rem 1.3rem;
-    border-radius:16px;
-    background:rgba(247,201,72,.06);
-    border:1px solid rgba(247,201,72,.25);
-    font-size:.87rem;color:#f0d9a8;
-    display:flex;gap:.8rem;align-items:flex-start;
-  }
-  .aviso svg{width:22px;height:22px;flex-shrink:0;margin-top:2px}
-  .aviso strong{color:#f7dfa8}
-
-  /* FOOTER */
-  footer{
-    margin-top:3rem;padding:1.8rem 1.4rem;
-    border-top:1px solid var(--border);
-    background:var(--card);
+/* ===== MODELO CHILE ===== */
+.modelo{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:14px;
+}
+.card{
+    background:var(--surface);
+    border:1px solid var(--line);
     border-radius:20px;
-    display:flex;justify-content:space-between;
-    align-items:center;flex-wrap:wrap;gap:1rem;
-    font-size:.82rem;color:var(--muted2);
-  }
-  .footer-left{
-    display:flex;flex-direction:column;gap:.3rem;
-    max-width:560px;
-  }
-  .footer-left strong{color:var(--text);font-size:.9rem}
-  .skeleton-brand{
-    display:inline-flex;align-items:center;gap:.55rem;
-    font-weight:700;color:var(--accent);
-    letter-spacing:.02em;font-size:.9rem;
-    text-decoration:none;
-    padding:.6rem 1rem;
-    border-radius:12px;
-    border:1px solid rgba(94,232,155,.25);
-    background:rgba(94,232,155,.05);
-    transition:.2s;
-    flex-shrink:0;
-  }
-  .skeleton-brand:hover{
-    background:rgba(94,232,155,.12);
-    border-color:var(--accent);
-    transform:translateY(-2px);
-  }
-  .skeleton-brand svg{width:18px;height:18px}
+    padding:28px;
+    transition:border-color .3s,transform .3s,background .3s;
+    position:relative;overflow:hidden;
+}
+.card:hover{
+    border-color:rgba(0,229,255,.4);
+    background:var(--surface-2);
+    transform:translateY(-3px);
+}
+.card .ico-big{
+    width:56px;height:56px;border-radius:16px;
+    background:rgba(0,229,255,.08);
+    border:1px solid rgba(0,229,255,.2);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+}
+.card .ico-big svg{width:28px;height:28px}
+.card h4{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--text);
+    margin-bottom:10px;
+    letter-spacing:-.02em;
+}
+.card p{font-size:.87rem;color:var(--muted);line-height:1.7}
 
-  @media(max-width:520px){
-    body{padding:1.2rem .8rem 2.5rem}
-    header{padding:1.4rem 0 1.8rem}
-    .p{padding:1.15rem;border-radius:16px}
-    .ico-wrap{width:44px;height:44px}
-    .ico-wrap svg{width:24px;height:24px}
-    .card{padding:1.2rem;border-radius:16px}
-    .pr{padding:1rem 1.1rem}
-    th,td{padding:.7rem .85rem;font-size:.82rem}
-    footer{flex-direction:column;text-align:center;padding:1.4rem 1rem}
-    .footer-left{align-items:center}
-    .pf{padding:1.3rem}
-  }
+.ventaja{
+    margin-top:22px;padding:20px 24px;
+    border-radius:16px;
+    background:linear-gradient(135deg,rgba(0,229,255,.08),rgba(168,85,247,.04));
+    border:1px solid rgba(0,229,255,.25);
+    font-size:.9rem;
+    color:#c9ecd6;
+    line-height:1.7;
+    position:relative;
+}
+.ventaja::before{
+    content:"";position:absolute;left:0;top:20%;bottom:20%;width:3px;
+    background:linear-gradient(180deg,var(--cyan),var(--purple));
+    border-radius:3px;
+}
+.ventaja strong{color:var(--cyan);font-weight:600}
+
+/* ===== PRINCIPIOS ===== */
+.principios{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:12px;
+}
+.pr{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 22px;
+    transition:border-color .25s,background .25s,transform .25s;
+}
+.pr:hover{
+    border-color:rgba(168,85,247,.4);
+    background:var(--surface-2);
+    transform:translateY(-2px);
+}
+.pr .num{
+    width:32px;height:32px;border-radius:10px;font-size:.82rem;
+    background:linear-gradient(135deg,var(--purple),var(--cyan));
+    color:#fff;
+    box-shadow:0 0 16px rgba(168,85,247,.3);
+}
+.pr strong{
+    display:block;
+    color:var(--text);
+    font-family:"Space Grotesk",sans-serif;
+    font-size:.95rem;
+    font-weight:600;
+    margin-bottom:5px;
+    letter-spacing:-.015em;
+}
+.pr p{font-size:.84rem;color:var(--muted);line-height:1.65}
+
+/* ===== AVISO ===== */
+.aviso{
+    margin-top:24px;
+    padding:20px 24px;
+    border-radius:16px;
+    background:rgba(247,201,72,.05);
+    border:1px solid rgba(247,201,72,.22);
+    font-size:.88rem;
+    color:#e8d9a8;
+    display:flex;gap:16px;align-items:flex-start;
+    line-height:1.7;
+    position:relative;
+}
+.aviso svg{
+    width:22px;height:22px;flex-shrink:0;margin-top:2px;
+    stroke:var(--yellow);fill:none;
+}
+.aviso strong{color:var(--yellow);font-weight:600}
+
+/* ===== FOOTER ===== */
+footer{
+    margin-top:60px;
+    padding:34px 0 48px;
+    border-top:1px solid var(--line-soft);
+    color:var(--muted);
+    font-size:.82rem;
+}
+.footer-inner{
+    display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:20px;
+}
+.footer-left{
+    display:flex;flex-direction:column;gap:5px;
+    max-width:560px;
+}
+.footer-left strong{
+    color:var(--text);font-family:"Space Grotesk",sans-serif;
+    font-size:.9rem;font-weight:600;letter-spacing:-.02em;
+}
+.skeleton-brand{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:600;color:var(--cyan);
+    font-size:.85rem;
+    padding:11px 18px;
+    border-radius:100px;
+    border:1px solid rgba(0,229,255,.3);
+    background:rgba(0,229,255,.05);
+    transition:all .25s ease;
+    flex-shrink:0;
+    letter-spacing:.02em;
+}
+.skeleton-brand:hover{
+    background:rgba(0,229,255,.12);
+    border-color:var(--cyan);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(0,229,255,.15);
+}
+.skeleton-brand svg{width:18px;height:18px;stroke:var(--cyan);fill:none}
+
+/* ===== BACKTOP ===== */
+.backtop{
+    position:fixed;right:20px;bottom:20px;
+    width:46px;height:46px;
+    display:grid;place-items:center;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:var(--surface);
+    color:var(--cyan);
+    box-shadow:0 8px 30px rgba(0,0,0,.5);
+    transition:all .25s ease;
+    z-index:800;
+}
+.backtop:hover{
+    transform:translateY(-3px);
+    border-color:var(--cyan);
+    box-shadow:0 12px 40px rgba(0,229,255,.25);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:760px){
+    .container{width:min(calc(100% - 28px),var(--container))}
+    header.hero{padding:62px 0 48px}
+    section{padding:48px 0}
+    .section-head{grid-template-columns:1fr;gap:14px;margin-bottom:28px}
+    .grid{grid-template-columns:1fr}
+    .p{padding:22px;border-radius:16px}
+    .ico-wrap{width:42px;height:42px}
+    .ico-wrap svg{width:22px;height:22px}
+    .card{padding:22px;border-radius:16px}
+    .pr{padding:16px 18px}
+    th,td{padding:12px 14px;font-size:.83rem}
+    footer{padding:26px 0 36px}
+    .footer-inner{flex-direction:column;align-items:flex-start}
+    .backtop{right:14px;bottom:14px;width:42px;height:42px}
+    h2 .bar{height:26px}
+}
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="noise"></div>
 
-  <!-- HEADER -->
-  <header>
-    <div class="brand">skeleton.cl</div>
-    <h1>17 pilares para sobrevivir a la era de <span>robótica + IA</span></h1>
-    <p class="subtitulo">
-      La clave no está en desarrollar inteligencia artificial, sino en controlar aquello que seguirá siendo necesario aunque las máquinas sean más inteligentes, rápidas y baratas.
-    </p>
-    <div class="meta-chips">
-      <span>🏭 17 sectores</span>
-      <span>🇨🇱 Modelo Chile</span>
-      <span>📊 Estrategia 2030</span>
-      <span>🤖 Robótica + IA + IoT</span>
-      <span>🖨️ Presente y futuro</span>
+<!-- TOPLINE -->
+<header class="topline">
+    <div class="container topline-inner">
+        <a class="brand" href="#top">PAUL PINEDA <span>/ 17 PILARES</span></a>
+        <div class="status">Estrategia · Robótica + IA</div>
     </div>
-  </header>
+</header>
 
-  <!-- 1. PILARES -->
-  <section>
-    <h2><span class="bar"></span>Los 17 pilares de una empresa preparada para el futuro</h2>
-    <div class="grid">
+<main id="top">
 
-      <!-- 1 Energía -->
-      <div class="p p-energia">
-        <div class="p-head">
-          <div class="num">1</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
-            </svg>
-          </div>
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-orb one"></div>
+        <div class="hero-orb two"></div>
+        <div class="container">
+            <div class="brand-tag">skeleton.cl · Guía estratégica</div>
+            <h1>17 pilares para sobrevivir a la era de <span>robótica + IA</span></h1>
+            <p class="subtitulo">
+                La clave no está en desarrollar inteligencia artificial, sino en controlar aquello
+                que seguirá siendo necesario aunque las máquinas sean más inteligentes,
+                rápidas y baratas.
+            </p>
+            <div class="meta-chips">
+                <span><i class="fa-solid fa-industry"></i> 17 sectores</span>
+                <span><i class="fa-solid fa-flag"></i> Modelo Chile</span>
+                <span><i class="fa-solid fa-chart-line"></i> Estrategia 2030</span>
+                <span><i class="fa-solid fa-robot"></i> Robótica + IA + IoT</span>
+                <span><i class="fa-solid fa-cube"></i> Presente y futuro</span>
+            </div>
         </div>
-        <div>
-          <h3>Energía e infraestructura eléctrica</h3>
-          <p>La IA y los robots necesitan electricidad, redes, transformadores, refrigeración y respaldo. Cuanto más se automaticen las industrias, más crítica será la energía confiable.</p>
-          <div class="op"><strong>Oportunidades:</strong> instalaciones eléctricas, almacenamiento, mantenimiento de redes, energía solar.</div>
-        </div>
-      </div>
+    </header>
 
-      <!-- 2 Agricultura -->
-      <div class="p p-agro">
-        <div class="p-head">
-          <div class="num">2</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22V12"/>
-              <path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/>
-              <path d="M12 12c0-4-3-7-7-7 0 4 3 7 7 7z"/>
-            </svg>
-          </div>
+    <!-- BANNER -->
+    <div class="banner">
+        <div class="banner-track">
+            <span class="banner-item"><i class="fa-solid fa-bolt"></i> Energía</span>
+            <span class="banner-item"><i class="fa-solid fa-seedling"></i> Agricultura</span>
+            <span class="banner-item"><i class="fa-solid fa-server"></i> Data centers</span>
+            <span class="banner-item"><i class="fa-solid fa-droplet"></i> Agua</span>
+            <span class="banner-item"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</span>
+            <span class="banner-item"><i class="fa-solid fa-truck"></i> Logística</span>
+            <span class="banner-item"><i class="fa-solid fa-helmet-safety"></i> Construcción</span>
+            <span class="banner-item"><i class="fa-solid fa-warehouse"></i> Almacenamiento</span>
+            <span class="banner-item"><i class="fa-solid fa-satellite"></i> Satelital</span>
+            <span class="banner-item"><i class="fa-solid fa-code"></i> Software</span>
+            <span class="banner-item"><i class="fa-solid fa-robot"></i> Robótica</span>
+            <span class="banner-item"><i class="fa-solid fa-wifi"></i> IoT</span>
+            <span class="banner-item"><i class="fa-solid fa-city"></i> Smart cities</span>
+            <span class="banner-item"><i class="fa-solid fa-cube"></i> Impresión 3D</span>
+            <span class="banner-item"><i class="fa-solid fa-recycle"></i> Reciclaje</span>
+            <span class="banner-item"><i class="fa-solid fa-bolt"></i> Energía</span>
+            <span class="banner-item"><i class="fa-solid fa-seedling"></i> Agricultura</span>
+            <span class="banner-item"><i class="fa-solid fa-server"></i> Data centers</span>
+            <span class="banner-item"><i class="fa-solid fa-droplet"></i> Agua</span>
+            <span class="banner-item"><i class="fa-solid fa-screwdriver-wrench"></i> Mantenimiento</span>
+            <span class="banner-item"><i class="fa-solid fa-truck"></i> Logística</span>
+            <span class="banner-item"><i class="fa-solid fa-helmet-safety"></i> Construcción</span>
+            <span class="banner-item"><i class="fa-solid fa-warehouse"></i> Almacenamiento</span>
+            <span class="banner-item"><i class="fa-solid fa-satellite"></i> Satelital</span>
+            <span class="banner-item"><i class="fa-solid fa-code"></i> Software</span>
+            <span class="banner-item"><i class="fa-solid fa-robot"></i> Robótica</span>
+            <span class="banner-item"><i class="fa-solid fa-wifi"></i> IoT</span>
+            <span class="banner-item"><i class="fa-solid fa-city"></i> Smart cities</span>
+            <span class="banner-item"><i class="fa-solid fa-cube"></i> Impresión 3D</span>
+            <span class="banner-item"><i class="fa-solid fa-recycle"></i> Reciclaje</span>
         </div>
-        <div>
-          <h3>Agricultura y producción de alimentos</h3>
-          <p>Las personas seguirán necesitando comer. La robótica transforma siembra, cosecha y distribución, pero la tierra, el agua, las semillas y la logística siguen siendo necesarias.</p>
-          <div class="op"><strong>Oportunidades:</strong> agricultura de precisión, riego inteligente, invernaderos automatizados, procesamiento.</div>
-        </div>
-      </div>
-
-      <!-- 3 Data centers -->
-      <div class="p p-data">
-        <div class="p-head">
-          <div class="num">3</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="6" rx="1.5"/>
-              <rect x="3" y="14" width="18" height="6" rx="1.5"/>
-              <line x1="7" y1="7" x2="7.01" y2="7"/>
-              <line x1="7" y1="17" x2="7.01" y2="17"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Centros de datos y cómputo</h3>
-          <p>Los sistemas de IA necesitan computación, refrigeración, energía estable y espacio físico. No hay que crear IA: también se puede vender la infraestructura que la hace posible.</p>
-          <div class="op"><strong>Oportunidades:</strong> racks, refrigeración, soporte técnico, seguridad física, edge computing.</div>
-        </div>
-      </div>
-
-      <!-- 4 Agua -->
-      <div class="p p-agua">
-        <div class="p-head">
-          <div class="num">4</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2.5S5 10 5 15a7 7 0 0 0 14 0c0-5-7-12.5-7-12.5z"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Agua y recursos esenciales</h3>
-          <p>Agua potable, tratamiento, riego y saneamiento son necesidades permanentes. La automatización mejora su gestión, pero no elimina el recurso.</p>
-          <div class="op"><strong>Oportunidades:</strong> tratamiento, detección de fugas, bombeo, reutilización, sistemas de riego.</div>
-        </div>
-      </div>
-
-      <!-- 5 Mantenimiento -->
-      <div class="p p-mant">
-        <div class="p-head">
-          <div class="num">5</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Mantenimiento y reparación</h3>
-          <p>Cuantas más máquinas existan, mayor será la necesidad de instalarlas, mantenerlas, repararlas e integrarlas. La automatización crea nuevas necesidades técnicas.</p>
-          <div class="op"><strong>Oportunidades:</strong> mantenimiento industrial, reparación de robots, sensores, automatización de pymes, repuestos.</div>
-        </div>
-      </div>
-
-      <!-- 6 Logística -->
-      <div class="p p-log">
-        <div class="p-head">
-          <div class="num">6</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="6" width="13" height="10" rx="1"/>
-              <path d="M14 9h4l3 3v4h-7"/>
-              <circle cx="6" cy="18" r="1.8"/>
-              <circle cx="17.5" cy="18" r="1.8"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Logística y distribución</h3>
-          <p>Producir no basta: hay que almacenar, transportar y entregar. La robótica automatiza bodegas, pero las empresas necesitan gestionar redes físicas y resolver problemas reales.</p>
-          <div class="op"><strong>Oportunidades:</strong> transporte especializado, cadena de frío, última milla, distribución regional.</div>
-        </div>
-      </div>
-
-      <!-- 7 Construcción -->
-      <div class="p p-const">
-        <div class="p-head">
-          <div class="num">7</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 21h20"/>
-              <path d="M4 21V9l8-5 8 5v12"/>
-              <path d="M9 21v-6h6v6"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Infraestructura física y construcción</h3>
-          <p>Aunque la IA diseñe y los robots construyan, seguirán siendo necesarios terrenos, materiales, carreteras, puentes, instalaciones y obras de adaptación.</p>
-          <div class="op"><strong>Oportunidades:</strong> infraestructura industrial, construcción especializada, rehabilitación, gestión de activos.</div>
-        </div>
-      </div>
-
-      <!-- 8 Almacenamiento -->
-      <div class="p p-almac">
-        <div class="p-head">
-          <div class="num">8</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21V8l9-5 9 5v13"/>
-              <path d="M3 21h18"/>
-              <rect x="7" y="12" width="10" height="9"/>
-              <line x1="7" y1="16" x2="17" y2="16"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Almacenamiento y warehousing</h3>
-          <p>Todo lo que se produce, se cosecha o se genera necesita guardarse: granos, frío, insumos, baterías, datos. Sin almacenamiento, la cadena se rompe y el producto se pierde.</p>
-          <div class="op"><strong>Oportunidades:</strong> bodegas robotizadas, silos, cadena de frío, almacenamiento de energía, storage de datos.</div>
-        </div>
-      </div>
-
-      <!-- 9 Conectividad satelital -->
-      <div class="p p-sat">
-        <div class="p-head">
-          <div class="num">9</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 12a8 8 0 0 1 8-8"/>
-              <path d="M4 16a12 12 0 0 1 12-12"/>
-              <circle cx="5" cy="19" r="1.5"/>
-              <path d="M15 9l6-6"/>
-              <rect x="14" y="13" width="6" height="4" rx="1" transform="rotate(45 17 15)"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Conectividad satelital e internet</h3>
-          <p>Sin conectividad no hay datos, ni IA, ni robots coordinados. En campo, mar, mina o zona rural, la única opción es satelital. Es la capa que hace funcionar todo lo demás.</p>
-          <div class="op"><strong>Oportunidades:</strong> internet satelital, IoT rural, telemetría, respaldo de red, enlaces remotos.</div>
-        </div>
-      </div>
-
-      <!-- 10 Software -->
-      <div class="p p-soft">
-        <div class="p-head">
-          <div class="num">10</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"/>
-              <polyline points="8 6 2 12 8 18"/>
-              <line x1="14" y1="4" x2="10" y2="20"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Software, plataformas y automatización</h3>
-          <p>El software es la capa que orquesta todo lo demás: controla robots, procesa datos, gestiona activos y conecta sensores. Sin software propio o integrado, la IA no sirve de nada.</p>
-          <div class="op"><strong>Oportunidades:</strong> plataformas SaaS, ERP/CRM a medida, control de robots, integración IoT, ciberseguridad.</div>
-        </div>
-      </div>
-
-      <!-- 11 Robótica aplicada -->
-      <div class="p p-robot">
-        <div class="p-head">
-          <div class="num">11</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="8" width="16" height="12" rx="2"/>
-              <circle cx="9" cy="14" r="1.5"/>
-              <circle cx="15" cy="14" r="1.5"/>
-              <line x1="12" y1="3" x2="12" y2="8"/>
-              <circle cx="12" cy="2.5" r="1.5"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Robótica aplicada a problemas reales</h3>
-          <p>No robots por moda, sino robots que resuelven: soldar, cosechar, inspeccionar, limpiar, reparar, rescatar. La robótica se vende por el problema que soluciona, no por la tecnología.</p>
-          <div class="op"><strong>Oportunidades:</strong> robots de servicio, brazos industriales, robots de inspección, automatización de pymes.</div>
-        </div>
-      </div>
-
-      <!-- 12 IoT -->
-      <div class="p p-iot">
-        <div class="p-head">
-          <div class="num">12</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="2"/>
-              <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
-              <path d="M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Sensores IoT e Industria 4.0</h3>
-          <p>Sin sensores no hay datos. Temperatura, humedad, vibración, consumo, posición. El IoT conecta el mundo físico con el digital y es la base de la automatización real.</p>
-          <div class="op"><strong>Oportunidades:</strong> sensores industriales, telemetría, monitoreo remoto, mantenimiento predictivo, pymes conectadas.</div>
-        </div>
-      </div>
-
-      <!-- 13 Smart cities + LoRa -->
-      <div class="p p-smart">
-        <div class="p-head">
-          <div class="num">13</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21h18"/>
-              <path d="M5 21V7l4-3v17"/>
-              <path d="M15 21V11l4 3v7"/>
-              <path d="M9 21V13h6v8"/>
-              <circle cx="12" cy="6" r="2"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Smart cities y redes LoRa</h3>
-          <p>Ciudades y campos conectados con sensores de bajo consumo y largo alcance. LoRa permite medir alumbrado, agua, residuos, estacionamiento y agro sin depender de 4G/5G.</p>
-          <div class="op"><strong>Oportunidades:</strong> redes LoRaWAN, alumbrado inteligente, telemetría urbana, gestión de residuos, agro conectado.</div>
-        </div>
-      </div>
-
-      <!-- 14 Impresión 3D -->
-      <div class="p p-3d">
-        <div class="p-head">
-          <div class="num">14</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/>
-              <path d="M3 7l9 5 9-5"/>
-              <line x1="12" y1="12" x2="12" y2="22"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Impresión 3D y fabricación aditiva</h3>
-          <p>Repuestos a demanda, prótesis, piezas industriales, viviendas y hasta alimentos. Reduce inventario, tiempos y costos de transporte. Cambia el modelo de repuestos tradicional.</p>
-          <div class="op"><strong>Oportunidades:</strong> repuestos on-demand, prótesis, construcción aditiva, impresión de alimentos, fabricación local.</div>
-        </div>
-      </div>
-
-      <!-- 15 Reciclaje -->
-      <div class="p p-recicla">
-        <div class="p-head">
-          <div class="num">15</div>
-          <div class="ico-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3l3 6h-6l3-6z"/>
-              <path d="M21 18l-6-3 3-6 3 6-3 3z"/>
-              <path d="M3 18l6-3-3-6-3 6 3 3z"/>
-              <path d="M9 9l3 6 3-6"/>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3>Reciclaje y economía circular</h3>
-          <p>Los recursos son finitos. Reciclar metales, plásticos, baterías y desechos electrónicos es una mina urbana. La regulación presiona, la demanda crece, y el que procesa, gana.</p>
-          <div class="op"><strong>Oportunidades:</strong> reciclaje de baterías, e-waste, compostaje, valorización energética, minería urbana.</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- 3. TABLA -->
-  <section>
-    <h2><span class="bar"></span>¿Qué sectores parecen más estratégicos?</h2>
-    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">
-      No existe un sector garantizado contra la disrupción. El Foro Económico Mundial identifica IA, robótica y sistemas autónomos como motores de transformación hacia 2030. La Agencia Internacional de la Energía documenta la creciente demanda eléctrica de los centros de datos.
-    </p>
-    <div class="tabla-wrap">
-      <table>
-        <thead>
-          <tr><th>Sector</th><th>¿Por qué puede ser importante?</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Energía eléctrica</td><td>Alimenta prácticamente toda la economía automatizada.</td></tr>
-          <tr><td>Agricultura</td><td>Produce alimentos y depende de recursos físicos.</td></tr>
-          <tr><td>Agua</td><td>Recurso esencial para hogares, industrias y cultivos.</td></tr>
-          <tr><td>Infraestructura</td><td>Permite construir, transportar, conectar y producir.</td></tr>
-          <tr><td>Mantenimiento industrial</td><td>Mantiene funcionando los sistemas automatizados.</td></tr>
-          <tr><td>Logística</td><td>Conecta la producción con sus consumidores.</td></tr>
-          <tr><td>Almacenamiento</td><td>Guarda alimentos, insumos, energía y datos.</td></tr>
-          <tr><td>Conectividad satelital</td><td>Sin red no hay datos, IA ni robots coordinados.</td></tr>
-          <tr><td>Software</td><td>Orquesta, automatiza y conecta todos los sistemas.</td></tr>
-          <tr><td>Robótica aplicada</td><td>Resuelve tareas físicas peligrosas, repetitivas o imposibles.</td></tr>
-          <tr><td>Sensores IoT</td><td>Capturan los datos que alimentan la IA y la automatización.</td></tr>
-          <tr><td>Smart cities + LoRa</td><td>Conectan ciudades y campos con redes de bajo consumo.</td></tr>
-          <tr><td>Impresión 3D</td><td>Fabrica repuestos y piezas a demanda, sin inventario.</td></tr>
-          <tr><td>Reciclaje</td><td>Recupera metales, plásticos y baterías: mina urbana.</td></tr>
-          <tr><td>Ciberseguridad</td><td>Protege los sistemas digitales y físicos conectados.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- 4. MODELO CHILE -->
-  <section>
-    <h2><span class="bar"></span>El modelo que yo estudiaría para Chile</h2>
-    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.2rem">
-      En una región como Los Ríos, considerar una empresa que combine tres áreas, en vez de depender de una sola.
-    </p>
-    <div class="modelo">
-      <div class="card">
-        <div class="ico-big">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#5ee89b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22V12"/>
-            <path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/>
-            <path d="M12 12c0-4-3-7-7-7 0 4 3 7 7 7z"/>
-          </svg>
-        </div>
-        <h4>Agricultura y recursos naturales</h4>
-        <p>Servicios para productores agrícolas, ganaderos y forestales: riego, sensores, monitoreo y optimización de recursos.</p>
-      </div>
-      <div class="card">
-        <div class="ico-big">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#f79e5e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 21h20"/>
-            <path d="M4 21V9l8-5 8 5v12"/>
-            <path d="M9 21v-6h6v6"/>
-          </svg>
-        </div>
-        <h4>Infraestructura y mantenimiento</h4>
-        <p>Instalaciones eléctricas, bombeo, conectividad rural, almacenamiento, robots de servicio y mantenimiento de equipos.</p>
-      </div>
-      <div class="card">
-        <div class="ico-big">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7eb8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
-            <line x1="14" y1="4" x2="10" y2="20"/>
-          </svg>
-        </div>
-        <h4>Software, IoT e IA</h4>
-        <p>Plataformas para gestionar operaciones, sensores IoT, redes LoRa, anticipar fallas, reducir costos y automatizar tareas administrativas.</p>
-      </div>
-    </div>
-    <div class="ventaja">
-      <strong>Ventaja:</strong> vender soluciones concretas a empresas que necesitan seguir funcionando, aunque cambien radicalmente las tecnologías disponibles.
-    </div>
-  </section>
-
-  <!-- 5. PRINCIPIOS -->
-  <section>
-    <h2><span class="bar"></span>Los cinco principios para sobrevivir a la disrupción</h2>
-    <div class="principios">
-      <div class="pr"><div class="num">1</div><div><strong>Controlar algo valioso</strong><p>Activos, infraestructura, contratos, conocimiento especializado o acceso a clientes.</p></div></div>
-      <div class="pr"><div class="num">2</div><div><strong>Resolver necesidades reales</strong><p>Energía, alimentos, agua, transporte, mantenimiento o seguridad.</p></div></div>
-      <div class="pr"><div class="num">3</div><div><strong>Usar IA en lugar de competir contra ella</strong><p>Automatizar internamente para reducir costos y aumentar productividad.</p></div></div>
-      <div class="pr"><div class="num">4</div><div><strong>Generar ingresos recurrentes</strong><p>Mantenimiento, contratos de servicio, suscripciones o suministro periódico.</p></div></div>
-      <div class="pr"><div class="num">5</div><div><strong>No depender de una sola tecnología</strong><p>Diseñar el negocio para poder cambiar de proveedores, máquinas y plataformas.</p></div></div>
     </div>
 
-    <div class="aviso">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#f7c948" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
-        <line x1="12" y1="9" x2="12" y2="13"/>
-        <line x1="12" y1="17" x2="12.01" y2="17"/>
-      </svg>
-      <div><strong>Advertencia importante:</strong> que un sector sea indispensable no significa que cualquier empresa de ese sector sea rentable. La inversión inicial, la regulación, la competencia y la capacidad de conseguir clientes importan tanto como la tendencia tecnológica.</div>
-    </div>
-  </section>
+    <!-- 1. PILARES -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="kicker">01 / Sectores estratégicos</span>
+                    <h2><span class="bar"></span>Los 17 pilares de una empresa preparada para el futuro</h2>
+                </div>
+                <p class="section-intro">
+                    No existe un sector garantizado contra la disrupción, pero sí hay áreas donde
+                    la necesidad real sigue siendo estructural: comida, energía, agua, datos,
+                    conectividad y las máquinas que sostienen todo lo demás.
+                </p>
+            </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-left">
-      <strong>17 pilares para sobrevivir a robótica + IA</strong>
-      <span>Paul Pineda </span>
-    </div>
-    <a class="skeleton-brand" href="https://skeleton.cl" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 3v18M3 12h18"/>
-      </svg>
-      hecho por skeleton.cl
-    </a>
-  </footer>
+            <div class="grid">
 
-</div>
+                <!-- 1 Energía -->
+                <div class="p p-energia">
+                    <div class="p-head">
+                        <div class="num">1</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Energía e infraestructura eléctrica</h3>
+                        <p>La IA y los robots necesitan electricidad, redes, transformadores, refrigeración y respaldo. Cuanto más se automaticen las industrias, más crítica será la energía confiable.</p>
+                        <div class="op"><strong>Oportunidades:</strong> instalaciones eléctricas, almacenamiento, mantenimiento de redes, energía solar.</div>
+                    </div>
+                </div>
+
+                <!-- 2 Agricultura -->
+                <div class="p p-agro">
+                    <div class="p-head">
+                        <div class="num">2</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22V12"/>
+                                <path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/>
+                                <path d="M12 12c0-4-3-7-7-7 0 4 3 7 7 7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Agricultura y producción de alimentos</h3>
+                        <p>Las personas seguirán necesitando comer. La robótica transforma siembra, cosecha y distribución, pero la tierra, el agua, las semillas y la logística siguen siendo necesarias.</p>
+                        <div class="op"><strong>Oportunidades:</strong> agricultura de precisión, riego inteligente, invernaderos automatizados, procesamiento.</div>
+                    </div>
+                </div>
+
+                <!-- 3 Data centers -->
+                <div class="p p-data">
+                    <div class="p-head">
+                        <div class="num">3</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="6" rx="1.5"/>
+                                <rect x="3" y="14" width="18" height="6" rx="1.5"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                <line x1="7" y1="17" x2="7.01" y2="17"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Centros de datos y cómputo</h3>
+                        <p>Los sistemas de IA necesitan computación, refrigeración, energía estable y espacio físico. No hay que crear IA: también se puede vender la infraestructura que la hace posible.</p>
+                        <div class="op"><strong>Oportunidades:</strong> racks, refrigeración, soporte técnico, seguridad física, edge computing.</div>
+                    </div>
+                </div>
+
+                <!-- 4 Agua -->
+                <div class="p p-agua">
+                    <div class="p-head">
+                        <div class="num">4</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2.5S5 10 5 15a7 7 0 0 0 14 0c0-5-7-12.5-7-12.5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Agua y recursos esenciales</h3>
+                        <p>Agua potable, tratamiento, riego y saneamiento son necesidades permanentes. La automatización mejora su gestión, pero no elimina el recurso.</p>
+                        <div class="op"><strong>Oportunidades:</strong> tratamiento, detección de fugas, bombeo, reutilización, sistemas de riego.</div>
+                    </div>
+                </div>
+
+                <!-- 5 Mantenimiento -->
+                <div class="p p-mant">
+                    <div class="p-head">
+                        <div class="num">5</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Mantenimiento y reparación</h3>
+                        <p>Cuantas más máquinas existan, mayor será la necesidad de instalarlas, mantenerlas, repararlas e integrarlas. La automatización crea nuevas necesidades técnicas.</p>
+                        <div class="op"><strong>Oportunidades:</strong> mantenimiento industrial, reparación de robots, sensores, automatización de pymes, repuestos.</div>
+                    </div>
+                </div>
+
+                <!-- 6 Logística -->
+                <div class="p p-log">
+                    <div class="p-head">
+                        <div class="num">6</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="6" width="13" height="10" rx="1"/>
+                                <path d="M14 9h4l3 3v4h-7"/>
+                                <circle cx="6" cy="18" r="1.8"/>
+                                <circle cx="17.5" cy="18" r="1.8"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Logística y distribución</h3>
+                        <p>Producir no basta: hay que almacenar, transportar y entregar. La robótica automatiza bodegas, pero las empresas necesitan gestionar redes físicas y resolver problemas reales.</p>
+                        <div class="op"><strong>Oportunidades:</strong> transporte especializado, cadena de frío, última milla, distribución regional.</div>
+                    </div>
+                </div>
+
+                <!-- 7 Construcción -->
+                <div class="p p-const">
+                    <div class="p-head">
+                        <div class="num">7</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 21h20"/>
+                                <path d="M4 21V9l8-5 8 5v12"/>
+                                <path d="M9 21v-6h6v6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Infraestructura física y construcción</h3>
+                        <p>Aunque la IA diseñe y los robots construyan, seguirán siendo necesarios terrenos, materiales, carreteras, puentes, instalaciones y obras de adaptación.</p>
+                        <div class="op"><strong>Oportunidades:</strong> infraestructura industrial, construcción especializada, rehabilitación, gestión de activos.</div>
+                    </div>
+                </div>
+
+                <!-- 8 Almacenamiento -->
+                <div class="p p-almac">
+                    <div class="p-head">
+                        <div class="num">8</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21V8l9-5 9 5v13"/>
+                                <path d="M3 21h18"/>
+                                <rect x="7" y="12" width="10" height="9"/>
+                                <line x1="7" y1="16" x2="17" y2="16"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Almacenamiento y warehousing</h3>
+                        <p>Todo lo que se produce, se cosecha o se genera necesita guardarse: granos, frío, insumos, baterías, datos. Sin almacenamiento, la cadena se rompe y el producto se pierde.</p>
+                        <div class="op"><strong>Oportunidades:</strong> bodegas robotizadas, silos, cadena de frío, almacenamiento de energía, storage de datos.</div>
+                    </div>
+                </div>
+
+                <!-- 9 Conectividad satelital -->
+                <div class="p p-sat">
+                    <div class="p-head">
+                        <div class="num">9</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 12a8 8 0 0 1 8-8"/>
+                                <path d="M4 16a12 12 0 0 1 12-12"/>
+                                <circle cx="5" cy="19" r="1.5"/>
+                                <path d="M15 9l6-6"/>
+                                <rect x="14" y="13" width="6" height="4" rx="1" transform="rotate(45 17 15)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Conectividad satelital e internet</h3>
+                        <p>Sin conectividad no hay datos, ni IA, ni robots coordinados. En campo, mar, mina o zona rural, la única opción es satelital. Es la capa que hace funcionar todo lo demás.</p>
+                        <div class="op"><strong>Oportunidades:</strong> internet satelital, IoT rural, telemetría, respaldo de red, enlaces remotos.</div>
+                    </div>
+                </div>
+
+                <!-- 10 Software -->
+                <div class="p p-soft">
+                    <div class="p-head">
+                        <div class="num">10</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                                <line x1="14" y1="4" x2="10" y2="20"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Software, plataformas y automatización</h3>
+                        <p>El software es la capa que orquesta todo lo demás: controla robots, procesa datos, gestiona activos y conecta sensores. Sin software propio o integrado, la IA no sirve de nada.</p>
+                        <div class="op"><strong>Oportunidades:</strong> plataformas SaaS, ERP/CRM a medida, control de robots, integración IoT, ciberseguridad.</div>
+                    </div>
+                </div>
+
+                <!-- 11 Robótica aplicada -->
+                <div class="p p-robot">
+                    <div class="p-head">
+                        <div class="num">11</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="8" width="16" height="12" rx="2"/>
+                                <circle cx="9" cy="14" r="1.5"/>
+                                <circle cx="15" cy="14" r="1.5"/>
+                                <line x1="12" y1="3" x2="12" y2="8"/>
+                                <circle cx="12" cy="2.5" r="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Robótica aplicada a problemas reales</h3>
+                        <p>No robots por moda, sino robots que resuelven: soldar, cosechar, inspeccionar, limpiar, reparar, rescatar. La robótica se vende por el problema que soluciona, no por la tecnología.</p>
+                        <div class="op"><strong>Oportunidades:</strong> robots de servicio, brazos industriales, robots de inspección, automatización de pymes.</div>
+                    </div>
+                </div>
+
+                <!-- 12 IoT -->
+                <div class="p p-iot">
+                    <div class="p-head">
+                        <div class="num">12</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2"/>
+                                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                                <path d="M6.3 6.3l2.8 2.8M14.9 14.9l2.8 2.8M17.7 6.3l-2.8 2.8M9.1 14.9l-2.8 2.8"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Sensores IoT e Industria 4.0</h3>
+                        <p>Sin sensores no hay datos. Temperatura, humedad, vibración, consumo, posición. El IoT conecta el mundo físico con el digital y es la base de la automatización real.</p>
+                        <div class="op"><strong>Oportunidades:</strong> sensores industriales, telemetría, monitoreo remoto, mantenimiento predictivo, pymes conectadas.</div>
+                    </div>
+                </div>
+
+                <!-- 13 Smart cities + LoRa -->
+                <div class="p p-smart">
+                    <div class="p-head">
+                        <div class="num">13</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21h18"/>
+                                <path d="M5 21V7l4-3v17"/>
+                                <path d="M15 21V11l4 3v7"/>
+                                <path d="M9 21V13h6v8"/>
+                                <circle cx="12" cy="6" r="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Smart cities y redes LoRa</h3>
+                        <p>Ciudades y campos conectados con sensores de bajo consumo y largo alcance. LoRa permite medir alumbrado, agua, residuos, estacionamiento y agro sin depender de 4G/5G.</p>
+                        <div class="op"><strong>Oportunidades:</strong> redes LoRaWAN, alumbrado inteligente, telemetría urbana, gestión de residuos, agro conectado.</div>
+                    </div>
+                </div>
+
+                <!-- 14 Impresión 3D -->
+                <div class="p p-3d">
+                    <div class="p-head">
+                        <div class="num">14</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/>
+                                <path d="M3 7l9 5 9-5"/>
+                                <line x1="12" y1="12" x2="12" y2="22"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Impresión 3D y fabricación aditiva</h3>
+                        <p>Repuestos a demanda, prótesis, piezas industriales, viviendas y hasta alimentos. Reduce inventario, tiempos y costos de transporte. Cambia el modelo de repuestos tradicional.</p>
+                        <div class="op"><strong>Oportunidades:</strong> repuestos on-demand, prótesis, construcción aditiva, impresión de alimentos, fabricación local.</div>
+                    </div>
+                </div>
+
+                <!-- 15 Reciclaje -->
+                <div class="p p-recicla">
+                    <div class="p-head">
+                        <div class="num">15</div>
+                        <div class="ico-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l3 6h-6l3-6z"/>
+                                <path d="M21 18l-6-3 3-6 3 6-3 3z"/>
+                                <path d="M3 18l6-3-3-6-3 6 3 3z"/>
+                                <path d="M9 9l3 6 3-6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Reciclaje y economía circular</h3>
+                        <p>Los recursos son finitos. Reciclar metales, plásticos, baterías y desechos electrónicos es una mina urbana. La regulación presiona, la demanda crece, y el que procesa, gana.</p>
+                        <div class="op"><strong>Oportunidades:</strong> reciclaje de baterías, e-waste, compostaje, valorización energética, minería urbana.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. TABLA -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="kicker">02 / Prioridades</span>
+                    <h2><span class="bar"></span>¿Qué sectores parecen más estratégicos?</h2>
+                </div>
+                <p class="section-intro">
+                    No existe un sector garantizado contra la disrupción. El Foro Económico Mundial
+                    identifica IA, robótica y sistemas autónomos como motores de transformación
+                    hacia 2030. La Agencia Internacional de la Energía documenta la creciente
+                    demanda eléctrica de los centros de datos.
+                </p>
+            </div>
+
+            <div class="tabla-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Sector</th><th>¿Por qué puede ser importante?</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Energía eléctrica</td><td>Alimenta prácticamente toda la economía automatizada.</td></tr>
+                        <tr><td>Agricultura</td><td>Produce alimentos y depende de recursos físicos.</td></tr>
+                        <tr><td>Agua</td><td>Recurso esencial para hogares, industrias y cultivos.</td></tr>
+                        <tr><td>Infraestructura</td><td>Permite construir, transportar, conectar y producir.</td></tr>
+                        <tr><td>Mantenimiento industrial</td><td>Mantiene funcionando los sistemas automatizados.</td></tr>
+                        <tr><td>Logística</td><td>Conecta la producción con sus consumidores.</td></tr>
+                        <tr><td>Almacenamiento</td><td>Guarda alimentos, insumos, energía y datos.</td></tr>
+                        <tr><td>Conectividad satelital</td><td>Sin red no hay datos, IA ni robots coordinados.</td></tr>
+                        <tr><td>Software</td><td>Orquesta, automatiza y conecta todos los sistemas.</td></tr>
+                        <tr><td>Robótica aplicada</td><td>Resuelve tareas físicas peligrosas, repetitivas o imposibles.</td></tr>
+                        <tr><td>Sensores IoT</td><td>Capturan los datos que alimentan la IA y la automatización.</td></tr>
+                        <tr><td>Smart cities + LoRa</td><td>Conectan ciudades y campos con redes de bajo consumo.</td></tr>
+                        <tr><td>Impresión 3D</td><td>Fabrica repuestos y piezas a demanda, sin inventario.</td></tr>
+                        <tr><td>Reciclaje</td><td>Recupera metales, plásticos y baterías: mina urbana.</td></tr>
+                        <tr><td>Ciberseguridad</td><td>Protege los sistemas digitales y físicos conectados.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MODELO CHILE -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="kicker">03 / Aplicación local</span>
+                    <h2><span class="bar"></span>El modelo que yo estudiaría para Chile</h2>
+                </div>
+                <p class="section-intro">
+                    En una región como Los Ríos, considerar una empresa que combine tres áreas,
+                    en vez de depender de una sola. Menos apuestas, más resiliencia estructural.
+                </p>
+            </div>
+
+            <div class="modelo">
+                <div class="card">
+                    <div class="ico-big">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#55d187" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22V12"/>
+                            <path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/>
+                            <path d="M12 12c0-4-3-7-7-7 0 4 3 7 7 7z"/>
+                        </svg>
+                    </div>
+                    <h4>Agricultura y recursos naturales</h4>
+                    <p>Servicios para productores agrícolas, ganaderos y forestales: riego, sensores, monitoreo y optimización de recursos.</p>
+                </div>
+                <div class="card">
+                    <div class="ico-big">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a4c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 21h20"/>
+                            <path d="M4 21V9l8-5 8 5v12"/>
+                            <path d="M9 21v-6h6v6"/>
+                        </svg>
+                    </div>
+                    <h4>Infraestructura y mantenimiento</h4>
+                    <p>Instalaciones eléctricas, bombeo, conectividad rural, almacenamiento, robots de servicio y mantenimiento de equipos.</p>
+                </div>
+                <div class="card">
+                    <div class="ico-big">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7eb8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                            <line x1="14" y1="4" x2="10" y2="20"/>
+                        </svg>
+                    </div>
+                    <h4>Software, IoT e IA</h4>
+                    <p>Plataformas para gestionar operaciones, sensores IoT, redes LoRa, anticipar fallas, reducir costos y automatizar tareas administrativas.</p>
+                </div>
+            </div>
+
+            <div class="ventaja">
+                <strong>Ventaja:</strong> vender soluciones concretas a empresas que necesitan
+                seguir funcionando, aunque cambien radicalmente las tecnologías disponibles.
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PRINCIPIOS -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="kicker">04 / Filosofía operativa</span>
+                    <h2><span class="bar"></span>Los cinco principios para sobrevivir a la disrupción</h2>
+                </div>
+                <p class="section-intro">
+                    Más que una lista de tecnologías, estos son criterios que aplican a cualquier
+                    empresa, sector o país que quiera seguir siendo relevante en la próxima década.
+                </p>
+            </div>
+
+            <div class="principios">
+                <div class="pr">
+                    <div class="num">1</div>
+                    <div>
+                        <strong>Controlar algo valioso</strong>
+                        <p>Activos, infraestructura, contratos, conocimiento especializado o acceso a clientes.</p>
+                    </div>
+                </div>
+                <div class="pr">
+                    <div class="num">2</div>
+                    <div>
+                        <strong>Resolver necesidades reales</strong>
+                        <p>Energía, alimentos, agua, transporte, mantenimiento o seguridad.</p>
+                    </div>
+                </div>
+                <div class="pr">
+                    <div class="num">3</div>
+                    <div>
+                        <strong>Usar IA en lugar de competir contra ella</strong>
+                        <p>Automatizar internamente para reducir costos y aumentar productividad.</p>
+                    </div>
+                </div>
+                <div class="pr">
+                    <div class="num">4</div>
+                    <div>
+                        <strong>Generar ingresos recurrentes</strong>
+                        <p>Mantenimiento, contratos de servicio, suscripciones o suministro periódico.</p>
+                    </div>
+                </div>
+                <div class="pr">
+                    <div class="num">5</div>
+                    <div>
+                        <strong>No depender de una sola tecnología</strong>
+                        <p>Diseñar el negocio para poder cambiar de proveedores, máquinas y plataformas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="aviso">
+                <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                <div>
+                    <strong>Advertencia importante:</strong> que un sector sea indispensable no
+                    significa que cualquier empresa de ese sector sea rentable. La inversión
+                    inicial, la regulación, la competencia y la capacidad de conseguir clientes
+                    importan tanto como la tendencia tecnológica.
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <strong>17 pilares para sobrevivir a robótica + IA</strong>
+                <span>Análisis estratégico · 2026 · Paul Pineda</span>
+            </div>
+            <a class="skeleton-brand" href="https://skeleton.cl" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 3v18M3 12h18"/>
+                </svg>
+                hecho por skeleton.cl
+            </a>
+        </div>
+    </div>
+</footer>
+
+<a class="backtop" href="#top" aria-label="Volver al inicio">
+    <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 </body>
 </html>
